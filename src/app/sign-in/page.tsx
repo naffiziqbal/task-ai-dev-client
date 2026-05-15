@@ -25,6 +25,7 @@ export default function SignInPage() {
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "sign-in failed");
+    } finally {
       setSubmitting(false);
     }
   }

@@ -41,6 +41,7 @@ export function UploadZone({ caseId }: { caseId: string }) {
         const res = await fetch(`${API_URL}/cases/${caseId}/documents`, {
           method: "POST",
           body: fd,
+          credentials: "include",
         });
         if (!res.ok) {
           const text = await res.text();

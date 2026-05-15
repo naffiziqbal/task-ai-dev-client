@@ -26,6 +26,7 @@ export default function SignUpPage() {
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "sign-up failed");
+    } finally {
       setSubmitting(false);
     }
   }

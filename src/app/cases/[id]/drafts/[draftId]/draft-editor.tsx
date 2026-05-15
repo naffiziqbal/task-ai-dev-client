@@ -394,6 +394,7 @@ function SourceViewer({ citation }: { citation: Citation }) {
     let cancelled = false;
     fetch(
       `${API_URL}/documents/${citation.documentId}/pages/${citation.pageNumber}`,
+      { credentials: "include" },
     )
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${r.status}`))))
       .then((d) => {
