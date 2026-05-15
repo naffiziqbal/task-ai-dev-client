@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    background: #08090a;
+    color: #f3f3f4;
+    font-feature-settings: "ss01", "cv11", "kern";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-image:
+      radial-gradient(
+        ellipse 80% 60% at 50% -10%,
+        rgba(212, 175, 107, 0.06),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 100% 100%,
+        rgba(212, 175, 107, 0.03),
+        transparent 60%
+      );
+    background-attachment: fixed;
+  }
+
+  /* Refined focus rings — visible but never garish. */
+  :focus-visible {
+    outline: 2px solid rgba(212, 175, 107, 0.6);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Subtle scrollbars to match the palette. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.16);
+    background-clip: padding-box;
+  }
+
+  /* Tighten and lift selection. */
+  ::selection {
+    background: rgba(212, 175, 107, 0.3);
+    color: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  /* Citation chip — used both in the draft editor and overlay tokens. */
+  .citation-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0 0.1rem;
+    padding: 0.05rem 0.45rem 0.05rem 0.35rem;
+    border: 1px solid rgba(212, 175, 107, 0.45);
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    color: #e6c483;
+    background: rgba(212, 175, 107, 0.08);
+    transition:
+      background 120ms ease,
+      border-color 120ms ease,
+      color 120ms ease,
+      transform 120ms ease;
+    vertical-align: baseline;
+  }
+  .citation-chip::before {
+    content: "§";
+    font-size: 0.6em;
+    color: rgba(230, 196, 131, 0.8);
+  }
+  .citation-chip:hover {
+    background: rgba(212, 175, 107, 0.22);
+    border-color: rgba(212, 175, 107, 0.75);
+    color: #fff5d8;
+  }
+  .citation-chip:active {
+    transform: translateY(0.5px);
+  }
+
+  /* Section eyebrow label — small, tracked, muted. */
+  .eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6c6c72;
+    font-weight: 500;
+  }
+
+  /* Editable section textarea base. Pairs with serif body for readability. */
+  .editable-section {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.625rem;
+    padding: 0.875rem 1rem;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #f3f3f4;
+    transition:
+      border-color 120ms ease,
+      background 120ms ease;
+  }
+  .editable-section:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+  .editable-section:focus-within,
+  .editable-section:focus {
+    border-color: rgba(212, 175, 107, 0.5);
+    background: rgba(255, 255, 255, 0.025);
+    outline: none;
+  }
+
+  .surface {
+    background: #101114;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.875rem;
+  }
+  .surface-raised {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0) 60%
+    ),
+      #101114;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.875rem;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+      0 12px 32px -16px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Skeleton shimmer used in loading placeholders. */
+@layer utilities {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+    border-radius: 0.5rem;
+  }
+}
